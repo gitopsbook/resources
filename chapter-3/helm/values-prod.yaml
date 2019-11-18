@@ -1,0 +1,4 @@
+image:
+  repository: acme.com/guestbook
+  tag: v1.0.0
+
