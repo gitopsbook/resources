@@ -7,7 +7,4 @@ spec:
   podSelector: {}                              #B
   ingress:
   - from:
-    - namespaceSelector:
-        matchLabels:
-          name: secondary                      #C
-
+    - podSelector: {}                 #C

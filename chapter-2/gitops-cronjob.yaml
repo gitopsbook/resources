@@ -6,9 +6,9 @@ metadata:
 spec:
   schedule: "*/5 * * * *"                            #A
   concurrencyPolicy: Forbid                          #B
-  backoffLimit: 0                                    #C
   jobTemplate:                                       #D
     spec:
+      backoffLimit: 0                                #C
       template:
         spec:
           restartPolicy: Never                       #E
