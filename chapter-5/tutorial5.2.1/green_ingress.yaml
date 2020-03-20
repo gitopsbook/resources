@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1 #networking.k8s.io/v1beta 
+kind: Ingress
+metadata:
+  name: demo-ingress
+spec:
+  rules:
+  - host: demo.info
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: green-service
+          servicePort: 80
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-configuration
+data:
+  allow-backend-server-header: "true"
+  use-forwarded-headers: "true"

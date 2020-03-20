@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: demo-ingress
+spec:
+  rules:
+  - host: demo.info
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: blue-service
+          servicePort: 80
+---
+apiVersion: v1
+data:
+  allow-backend-server-header: "true"
+  use-forwarded-headers: "true"
+kind: ConfigMap
+metadata:
+  name: nginx-configuration
