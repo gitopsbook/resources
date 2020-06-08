@@ -1,0 +1,26 @@
+spec:
+  template:
+    spec:
+      volumes:
+      - name: gpg-public-keys
+        configMap:
+          name: flux-gpg-public-keys
+          defaultMode: 0400
+      containers:
+      - name: flux
+        volumeMounts:
+        - name: gpg-public-keys
+          mountPath: /root/gpg-public-keys
+          readOnly: true
+        args:
+        - --memcached-service=
+        - --ssh-keygen-dir=/var/fluxd/keygen
+        - --git-url=git@github.com:<USERNAME>/sample-app-deployment.git
+        - --git-branch=master
+        - --git-path=.
+        - --git-label=flux
+        - --git-email=<USERNAME>@users.noreply.github.com
+        - --manifest-generation=true
+        - --listen-metrics=:3031
+        - --git-gpg-key-import=/root/gpg-public-keys
+        - --git-verify-signatures
