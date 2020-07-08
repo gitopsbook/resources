@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 bases:                        #A
-- ../base
+- ../../base
 
 patchesStrategicMerge:
 - guestbook-patch.yaml        #B
@@ -10,4 +10,3 @@ patchesStrategicMerge:
 images:                       #C
 - name: acme.com/guestbook
   newTag: v1.0.0
-
