@@ -18,5 +18,5 @@ spec:
             image: gitops/example:latest             #G
             command: [sh, -e, -c]                    #H
             args:
-            - git clone http://github.com/gitops/example.git /tmp/example
+            - git clone https://github.com/gitopsbook/sample-app-deployment.git /tmp/example
               find /tmp/example -name '*.yaml' -exec kubectl apply -f {} \;
