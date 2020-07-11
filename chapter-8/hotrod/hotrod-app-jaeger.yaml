@@ -16,7 +16,11 @@ items:
             app: hotrod
         spec:
           containers:
-            - args: ["-m", "prometheus", "all"]
+            - args:
+                - "-m"
+                - "prometheus"
+                #- "--fix-disable-db-conn-mutex"
+                - "all"
               image: jaegertracing/example-hotrod:latest
               name: hotrod
               env:
