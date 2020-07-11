@@ -1,30 +1,43 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: hotrod
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: hotrod
-  template:
+apiVersion: v1
+kind: List
+items:
+  - apiVersion: apps/v1
+    kind: Deployment
     metadata:
-      labels:
-        app: hotrod
+      name: hotrod
     spec:
-      containers:
-        - args: ["-m", "prometheus", "all"]
-          image: jaegertracing/example-hotrod:latest
-          name: hotrod
-          env:
-            - name: JAEGER_AGENT_HOST
-              value: "jaeger-agent"
-          ports:
-            - name: frontend
-              containerPort: 8080
-            - name: customer
-              containerPort: 8081
-            - name: driver
-              containerPort: 8082
-            - name: route
-              containerPort: 8083
+      replicas: 1
+      selector:
+        matchLabels:
+          app: hotrod
+      template:
+        metadata:
+          labels:
+            app: hotrod
+        spec:
+          containers:
+            - args: ["-m", "prometheus", "all"]
+              image: jaegertracing/example-hotrod:latest
+              name: hotrod
+              env:
+                - name: JAEGER_AGENT_HOST
+                  value: "jaeger-agent"
+              ports:
+                - name: frontend
+                  containerPort: 8080
+                - name: customer
+                  containerPort: 8081
+                - name: driver
+                  containerPort: 8082
+                - name: route
+                  containerPort: 8083
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: hotrod-frontend
+    spec:
+      ports:
+        - port: 80
+          targetPort: 8080
+      selector:
+        app: hotrod
