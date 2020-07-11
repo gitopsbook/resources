@@ -16,6 +16,9 @@ spec:
         - args: ["-m", "prometheus", "all"]
           image: jaegertracing/example-hotrod:latest
           name: hotrod
+          env:
+            - name: JAEGER_AGENT_HOST
+              value: "jaeger-agent"
           ports:
             - name: frontend
               containerPort: 8080
