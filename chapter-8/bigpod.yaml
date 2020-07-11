@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bigpod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bigpod
+  template:
+    metadata:
+      labels:
+        app: bigpod
+    spec:
+      containers:
+      - command:
+        - /app/sample-app
+        image: gitopsbook/sample-app:v0.1
+        name: bigpod
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "999Gi" #A
+            cpu: "99" #B
