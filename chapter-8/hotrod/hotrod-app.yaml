@@ -38,3 +38,4 @@ items:
           targetPort: 8080
       selector:
         app: hotrod
+      type: LoadBalancer
