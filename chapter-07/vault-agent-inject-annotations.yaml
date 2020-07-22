@@ -1,0 +1,4 @@
+annotations:
+  vault.hashicorp.com/agent-inject-secret-hello.txt: secret/hello
+  vault.hashicorp.com/role: app
+
