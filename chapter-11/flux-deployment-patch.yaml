@@ -24,3 +24,4 @@ spec:
         - --listen-metrics=:3031
         - --git-gpg-key-import=/root/gpg-public-keys
         - --git-verify-signatures
+        - --git-verify-signatures-mode=first-parent
