@@ -15,7 +15,7 @@ spec:
           serviceAccountName: gitops-serviceaccount  #F
           containers:
           - name: gitops-operator
-            image: gitops/example:latest             #G
+            image: gitopsbook/example-operator:v1.0  #G
             command: [sh, -e, -c]                    #H
             args:
             - git clone https://github.com/gitopsbook/sample-app-deployment.git /tmp/example
