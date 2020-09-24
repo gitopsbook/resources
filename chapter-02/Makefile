@@ -1,6 +1,6 @@
 # Image URL to use for building/pushing images
 TAG ?= latest
-IMG ?= gitopsbook/example-controller:${TAG}
+IMG ?= gitopsbook/example-operator:${TAG}
 
 # Build the docker image
 docker-build:
