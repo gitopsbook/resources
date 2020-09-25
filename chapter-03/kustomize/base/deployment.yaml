@@ -1,17 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: guestbook-deploy
+  name: sample-app
 spec:
+  replicas: 1
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: guestbook
+      app: sample-app
   template:
     metadata:
       labels:
-        app: guestbook
+        app: sample-app
     spec:
       containers:
-      - name: guestbook
-        image: acme.com/guestbook:REPLACEME   #A
-
+      - command:
+        - /app/sample-app
+        image: gitopsbook/sample-app:REPLACEME   #A
+        name: sample-app
+        ports:
+        - containerPort: 8080

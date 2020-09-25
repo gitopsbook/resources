@@ -5,8 +5,8 @@ bases:                        #A
 - ../../base
 
 patchesStrategicMerge:
-- guestbook-patch.yaml        #B
+- debug.yaml                  #B
 
 images:                       #C
-- name: acme.com/guestbook
-  newTag: v1.0.0
+- name: gitopsbook/sample-app
+  newTag: v0.2
