@@ -1,13 +1,12 @@
 apiVersion: apps/v1          #A
-kind: Deployment             #A
+kind: Deployment
 metadata:
-  name: guestbook-deploy     #A
+  name: sample-app
 spec:
   template:
     spec:
       containers:
-      - name: guestbook      #B
+      - name: sample-app     #B
         env:                 #C
         - name: DEBUG
           value: "true"
-
