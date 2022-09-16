@@ -1,14 +1,18 @@
 
 #!/usr/bin/env bash
 
+SKIPPEDCONFIGMAP="kube-root-ca.crt"
+
 kubectl get --watch --output-watch-events configmap \
 -o=custom-columns=type:type,name:object.metadata.name \
 --no-headers | \
+
 while read next; do                                        #B
 
     NAME=$(echo $next | cut -d' ' -f2)                     #C
     EVENT=$(echo $next | cut -d' ' -f1)
 
+    if [ "$NAME" != "$SKIPPEDCONFIGMAP" ]; then
     case $EVENT in
         ADDED|MODIFIED)                                    #D
             kubectl apply -f - << EOF
@@ -40,4 +44,5 @@ EOF
             kubectl delete deploy $NAME
             ;;
     esac
+    fi
 done
