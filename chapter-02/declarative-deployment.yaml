@@ -4,7 +4,7 @@ metadata:
   name: nginx-declarative
   annotations:
     environment: prod
-    organization: sales
+    organization: marketing
 spec:
   replicas: 3
   selector:
